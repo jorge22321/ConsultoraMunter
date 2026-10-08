@@ -1,0 +1,14 @@
+frontend/node_modules/
+backend/node_modules/
+frontend/dist/
+backend/data/
+backend/.test-data/
+frontend/.eslintcache
+frontend/*.tsbuildinfo
+frontend/public/template-assets/
+frontend/public/original-layout/
+frontend/tools/reference-infinity/
+example/
+.vercel/
+.env
+*.local

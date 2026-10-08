@@ -1,0 +1,16 @@
+services:
+  munter-web:
+    build: .
+    image: consultora-munter-asociados:latest
+    ports:
+      - "3000:3000"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+      DATA_DIR: /app/data
+    volumes:
+      - munter-consultas:/app/data
+    restart: unless-stopped
+
+volumes:
+  munter-consultas:
