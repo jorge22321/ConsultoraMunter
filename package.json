@@ -1,0 +1,16 @@
+{
+  "name": "consultoramunter-vercel",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm ci --prefix frontend && npm run build --prefix frontend"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}

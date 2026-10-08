@@ -31,7 +31,13 @@ cd ../backend
 npm start
 ```
 
-El backend sirve `frontend/dist`, las rutas de Vue y la API en **http://127.0.0.1:3000**. La configuración disponible está documentada en `backend/.env.example`. Al publicar, configura `FRONTEND_ORIGINS` con el dominio real y usa almacenamiento persistente para `DATA_DIR`. El proyecto no se ha publicado en Internet.
+El backend sirve `frontend/dist`, las rutas de Vue y la API en **http://127.0.0.1:3000**. La configuración disponible está documentada en `backend/.env.example`. En Docker, `compose.yml` conserva las consultas en el volumen `munter-consultas`.
+
+## Docker y Vercel
+
+`docker compose up --build -d` inicia la web completa en el puerto 3000. Para usar otro puerto local, cambia únicamente el lado izquierdo de `ports` en `compose.yml`.
+
+`vercel.json` construye el frontend y publica `api/health.js` y `api/consultas.js` como funciones Node. El formulario de Vercel guarda cada consulta en un Blob **privado** y confirma el envío solo después de guardarla. Es necesario crear un Vercel Blob privado, conectarlo al proyecto y habilitar `BLOB_READ_WRITE_TOKEN`; si falta, el formulario indica que está temporalmente indisponible. El backend Docker sigue guardando las consultas en `DATA_DIR`.
 
 ## Contenido y diseño
 

@@ -98,4 +98,4 @@ function createApp(options = {}) {
   });
   return app;
 }
-module.exports = { createApp };
+module.exports = { createApp, validate };
