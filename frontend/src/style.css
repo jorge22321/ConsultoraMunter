@@ -61,7 +61,8 @@ wow-image img {
   align-items: center;
   justify-content: center;
   height: auto !important;
-  min-height: 280px !important;
+  min-height: max(280px, 21vw) !important;
+  width: 100% !important;
   padding: 110px 5% 55px !important;
   box-sizing: border-box;
 }
@@ -78,7 +79,7 @@ wow-image img {
   margin: 0 !important;
 }
 .munter-page-cover h1 {
-  font-size: clamp(30px, 4.7vw, 60px) !important;
+  font-size: max(30px, 4.7vw) !important;
   line-height: 1.2 !important;
   text-align: center;
   overflow-wrap: break-word;
