@@ -124,7 +124,7 @@ p {
   font-size: 0.78rem;
 }
 .brand small {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: #c7a56c;
   letter-spacing: 0.15em;
   margin-top: 5px;
@@ -526,7 +526,7 @@ p {
   padding: 18px 0;
 }
 .contact-details dt {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #8b6b39;
@@ -802,7 +802,7 @@ p {
     font-size: 0.61rem;
   }
   .brand small {
-    font-size: 0.59rem;
+    font-size: 0.61rem;
   }
   .brand img {
     width: 38px;
