@@ -2,7 +2,7 @@
 import { reactive, ref, watch, useId } from 'vue'
 import { useRoute } from 'vue-router'
 import { services, contact } from '../data/content'
-
+import AreaIcon from './AreaIcon.vue'
 const props = withDefaults(defineProps<{ mode?: 'asesoria' | 'general' }>(), { mode: 'asesoria' })
 const route = useRoute()
 const uid = useId()
@@ -66,21 +66,22 @@ async function submit() {
 }
 </script>
 <template>
-  <div v-if="reference" class="form-success" role="status">
+  <div v-if="reference" class="infinity-form-success" role="status">
+    <AreaIcon />
     <h3>Tu consulta quedó registrada.</h3>
     <p>
       Tu código de referencia es <strong>{{ reference }}</strong
       >.
     </p>
     <p>Para coordinar la atención directamente, puedes escribirnos por WhatsApp.</p>
-    <a :href="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="button button-dark"
-      >Conversar por WhatsApp</a
+    <a :href="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="infinity-button"
+      >Conversar por WhatsApp ↗</a
     >
     <button class="form-again" @click="reference = ''">Registrar otra consulta</button>
   </div>
-  <form v-else class="consult-form" aria-label="Formulario de consulta" @submit.prevent="submit">
+  <form v-else class="infinity-form" aria-label="Formulario de consulta" @submit.prevent="submit">
     <fieldset :disabled="sending">
-      <div class="form-grid">
+      <div class="infinity-form-grid">
         <label :for="uid + 'first'"
           >Nombre *<input
             :id="uid + 'first'"
@@ -147,20 +148,20 @@ async function submit() {
           />
         </label>
       </div>
-      <div class="honeypot" aria-hidden="true">
+      <div class="munter-honeypot" aria-hidden="true">
         <label
           >Sitio web<input v-model="form.website" name="website" tabindex="-1" autocomplete="off"
         /></label>
       </div>
-      <label class="form-consent"
+      <label class="infinity-consent"
         ><input v-model="form.consent" type="checkbox" required /><span
           >Autorizo el uso de mis datos para atender esta consulta y he leído la
           <a href="/privacidad" target="_blank">información de privacidad</a>.</span
         ></label
       >
-      <p v-if="error" class="form-error" role="alert">{{ error }}</p>
-      <button class="button button-dark" type="submit" :disabled="sending">
-        {{ sending ? 'Registrando…' : 'Enviar consulta' }}
+      <p v-if="error" class="infinity-form-error" role="alert">{{ error }}</p>
+      <button class="infinity-button" type="submit" :disabled="sending">
+        {{ sending ? 'Registrando…' : 'Enviar consulta' }} <span aria-hidden="true">↗</span>
       </button>
     </fieldset>
   </form>

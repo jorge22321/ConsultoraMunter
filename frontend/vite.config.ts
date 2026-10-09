@@ -8,7 +8,7 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   plugins: [
     VueDevTools(),
-    vue(),
+    vue({ template: { compilerOptions: { isCustomElement: (tag) => tag.includes('-') } } }),
   ],
   resolve: {
     alias: {

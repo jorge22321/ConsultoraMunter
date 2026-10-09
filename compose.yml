@@ -8,9 +8,6 @@ services:
       HOST: 0.0.0.0
       PORT: 3000
       DATA_DIR: /app/data
-      RESEND_API_KEY: ${RESEND_API_KEY:-}
-      NOTIFICATION_FROM: ${NOTIFICATION_FROM:-}
-      NOTIFICATION_TO: ${NOTIFICATION_TO:-consultoramunteryasociados@gmail.com}
     volumes:
       - munter-consultas:/app/data
     restart: unless-stopped
