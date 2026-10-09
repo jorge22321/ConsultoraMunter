@@ -36,7 +36,7 @@ export const services: Service[] = [
       'Orientación y acompañamiento en asuntos de familia y derecho tributario municipal.',
     intro:
       'Cada situación merece ser escuchada. Te ayudamos a identificar el servicio legal que necesitas y a organizar los siguientes pasos con un especialista.',
-    image: '/images/consultoria.jpg',
+    image: '/images/legal.jpg',
     brochure: '/images/servicios-familia.png',
     items: [
       'Derecho de familia',
@@ -77,7 +77,7 @@ export const services: Service[] = [
       'Soluciones técnicas para planificar, diseñar y dar forma a tus proyectos de construcción.',
     intro:
       'Conectamos tu idea con la planificación técnica que necesita. Contamos con profesionales en distintas ramas de la ingeniería para acompañar tu proyecto.',
-    image: '/images/arquitectura-planos.jpg',
+    image: '/images/arquitectura.jpg',
     brochure: '/images/servicios-ingenieria.png',
     items: [
       'Diseño de planos de arquitectura y estructuras',
@@ -100,7 +100,7 @@ export const services: Service[] = [
       'Asesoría contable, administrativa y financiera para ordenar y gestionar tu negocio.',
     intro:
       'Una gestión organizada te ayuda a tomar decisiones con más claridad. Cuéntanos qué necesita tu negocio para identificar el acompañamiento adecuado.',
-    image: '/images/finanzas.jpeg',
+    image: '/images/finanzas.jpg',
     items: [
       'Asesoría contable',
       'Administración y gestión del negocio',
@@ -118,7 +118,7 @@ export const services: Service[] = [
       'Acompañamiento en importaciones, documentación, trámites aduaneros y traslado de mercancías.',
     intro:
       'Te orientamos en las distintas etapas de tu importación, desde el seguimiento de proveedores hasta la gestión documental y logística.',
-    image: '/infinity-assets/cab28935363f6e7abbd2.jpg',
+    image: '/images/comercio.jpg',
     brochure: '/images/servicios-importaciones.png',
     items: [
       'Seguimiento de importaciones y lista de proveedores',
@@ -140,7 +140,7 @@ export const services: Service[] = [
       'Acompañamiento para comunicar tu marca y desarrollar su presencia en el entorno digital.',
     intro:
       'Tu negocio también necesita una comunicación que lo represente. Conversamos contigo para identificar tus necesidades de marketing digital y diseño gráfico.',
-    image: '/images/equipo.jpg',
+    image: '/images/marketing.jpg',
     items: [
       'Asesoría en marketing digital',
       'Diseño gráfico',

@@ -3,9 +3,6 @@
 frontend/dist
 backend/data
 backend/.test-data
-frontend/public/template-assets
-frontend/public/original-layout
-frontend/tools
 example
 docs
 .vercel

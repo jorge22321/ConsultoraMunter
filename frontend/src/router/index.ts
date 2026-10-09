@@ -1,82 +1,65 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import { services } from '../data/content'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/',
-      component: HomeView,
-      meta: { title: 'Consultoría legal, ingeniería y negocios', layout: 'home' },
-    },
+    { path: '/', component: HomeView, meta: { title: 'Consultoría legal, ingeniería y negocios' } },
     {
       path: '/nosotros',
       component: () => import('../views/AboutView.vue'),
-      meta: { title: 'Nuestra consultora', layout: 'about' },
+      meta: { title: 'Nosotros' },
     },
     {
       path: '/servicios',
       component: () => import('../views/ServicesView.vue'),
-      meta: { title: 'Nuestros servicios', layout: 'services' },
+      meta: { title: 'Servicios' },
     },
     {
       path: '/servicios/:slug',
       component: () => import('../views/ServicesView.vue'),
-      meta: { layout: 'services' },
       beforeEnter: (to) => services.some((s) => s.id === to.params.slug) || '/servicios',
     },
     {
       path: '/contacto',
       component: () => import('../views/ContactView.vue'),
-      meta: { title: 'Contacto', layout: 'contact' },
+      meta: { title: 'Contacto' },
     },
     {
       path: '/privacidad',
       component: () => import('../views/PrivacyView.vue'),
-      meta: { title: 'Privacidad', layout: 'privacy' },
+      meta: { title: 'Privacidad' },
     },
     {
       path: '/accesibilidad',
       component: () => import('../views/AccessibilityView.vue'),
-      meta: { title: 'Accesibilidad', layout: 'privacy' },
+      meta: { title: 'Accesibilidad' },
     },
-    { path: '/:pathMatch(.*)*', redirect: '/' },
+    {
+      path: '/:pathMatch(.*)*',
+      component: () => import('../views/NotFoundView.vue'),
+      meta: { title: 'Página no encontrada' },
+    },
   ],
   scrollBehavior(to, _from, saved) {
     if (saved) return saved
-    if (to.hash === '#especialidades') return { el: '#comp-mmof786q', top: 90, behavior: 'smooth' }
+    if (to.hash === '#especialidades') return { el: '#especialidades', top: 30, behavior: 'smooth' }
     return { top: 0, behavior: 'instant' }
   },
 })
-router.beforeResolve(async (to) => {
-  const href = `/infinity-layout/${to.meta.layout || 'home'}.css`
-  const previous = document.getElementById('page-layout') as HTMLLinkElement | null
-  if (previous?.getAttribute('href') === href) return
-  await new Promise<void>((resolve, reject) => {
-    const link = document.createElement('link')
-    link.rel = 'stylesheet'
-    link.href = href
-    link.onload = () => {
-      previous?.remove()
-      link.id = 'page-layout'
-      resolve()
-    }
-    link.onerror = () => {
-      link.remove()
-      reject(new Error('No se pudo cargar el diseño.'))
-    }
-    document.head.append(link)
-  })
-})
 router.afterEach((to) => {
   const service = services.find((s) => s.id === to.params.slug)
-  document.title = `${service?.title || to.meta.title || 'Servicios'} | Munter & Asociados`
+  const title = service?.title || to.meta.title || 'Servicios'
+  const description =
+    service?.description ||
+    'Consultora Munter & Asociados en Manchay, Pachacámac. Asesoría legal, ingeniería, contabilidad, comercio exterior y diseño.'
+  document.title = `${title} | Consultora Munter & Asociados`
+  document.querySelector('meta[name="description"]')?.setAttribute('content', description)
+  document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title)
+  document.querySelector('meta[property="og:description"]')?.setAttribute('content', description)
   document
-    .querySelector('meta[name="description"]')
-    ?.setAttribute(
-      'content',
-      service?.description ||
-        'Consultora Munter & Asociados en Manchay, Pachacámac. Derecho, arquitectura e ingeniería, contabilidad, comercio exterior, marketing y diseño.',
-    )
+    .querySelector('link[rel="canonical"]')
+    ?.setAttribute('href', `https://consultora-munter.vercel.app${to.path}`)
 })
 export default router
